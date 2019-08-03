@@ -1,10 +1,13 @@
 package parent::versioned;
+
 use strict;
 
 our $VERSION = '0.001_01';
 $VERSION = eval "$VERSION";
 
 # Based on parent.pm, version 0.237;
+# parent was included in the Perl core beginning with Perl 5.10.1,
+# and is dual-lived on CPAN.
 
 sub import {
     my $class = shift;
@@ -95,28 +98,37 @@ either C<.pm> or C<.pmc>), use the following code:
 
 =head1 HISTORY
 
-This module was forked from L<base> to remove the cruft
-that had accumulated in it.
+This module was forked from L<parent>, which itself was forked from
+L<base> to remove the cruft that had accumulated in it.
 
 =head1 CAVEATS
 
 =head1 SEE ALSO
 
-L<base>
+=over 4
+
+=item L<parent>
+
+=item L<base>
+
+=back
 
 =head1 AUTHORS AND CONTRIBUTORS
 
-David Oswald forked this from L<parent> and added version checking.
-Rafaël Garcia-Suarez, Bart Lateur, Max Maischein, Anno Siegel, Michael Schwern
+David Oswald forked this module from L<parent> and added version checking.
+
+L<parent> was authored by Rafaël Garcia-Suarez, Bart Lateur, Max Maischein,
+Anno Siegel, and Michael Schwern.
 
 =head1 MAINTAINER
 
 David Oswald C< davido@cpan.org >
 
 Copyright (c) 2019 David Oswald C<< <davido@cpan.org> >>.
+
 Based on a fork from L<parent>, which is maintained
 by Max Maischein C<< <corion@cpan.org> >>, and was introduced to the
-Perl core with Perl 5.10.
+Perl core with Perl 5.10.1.
 
 =head1 LICENSE
 
