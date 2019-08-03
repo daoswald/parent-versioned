@@ -10,7 +10,7 @@ use Test::More tests => 3;
 
 {
     package Child;
-    use parent -norequire, 'MyParent';
+    use parent::versioned -norequire, 'MyParent';
 }
 
 my $obj = {};

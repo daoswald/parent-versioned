@@ -1,7 +1,7 @@
 .cvsignore
 .gitignore
 Changes
-lib/parent.pm
+lib/parent/versioned.pm
 Makefile.PL
 MANIFEST
 MANIFEST.SKIP

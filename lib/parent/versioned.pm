@@ -1,7 +1,10 @@
-package parent;
+package parent::versioned;
 use strict;
 
-our $VERSION = '0.237';
+our $VERSION = '0.001_01';
+$VERSION = eval "$VERSION";
+
+# Based on parent.pm, version 0.237;
 
 sub import {
     my $class = shift;
@@ -31,12 +34,12 @@ __END__
 
 =head1 NAME
 
-parent - Establish an ISA relationship with base classes at compile time
+parent::versioned - Establish an ISA relationship with base classes at compile time, with version checking.
 
 =head1 SYNOPSIS
 
     package Baz;
-    use parent qw(Foo Bar);
+    use parent::versioned qw(Foo Bar);
 
 =head1 DESCRIPTION
 
@@ -52,13 +55,13 @@ those modules at the same time.  Mostly similar in effect to
 
 By default, every base class needs to live in a file of its own.
 If you want to have a subclass and its parent class in the same file, you
-can tell C<parent> not to load any modules by using the C<-norequire> switch:
+can tell C<parent::versioned> not to load any modules by using the C<-norequire> switch:
 
   package Foo;
   sub exclaim { "I CAN HAS PERL" }
 
   package DoesNotLoadFooBar;
-  use parent -norequire, 'Foo', 'Bar';
+  use parent::versioned -norequire, 'Foo', 'Bar';
   # will not go looking for Foo.pm or Bar.pm
 
 This is equivalent to the following code:
@@ -74,7 +77,7 @@ a differently named file:
 
   package MyHash;
   use Tie::Hash;
-  use parent -norequire, 'Tie::StdHash';
+  use parent::versioned -norequire, 'Tie::StdHash';
 
 This is equivalent to the following code:
 
@@ -88,7 +91,7 @@ either C<.pm> or C<.pmc>), use the following code:
 
   package MySecondPlugin;
   require './plugins/custom.plugin'; # contains Plugin::Custom
-  use parent -norequire, 'Plugin::Custom';
+  use parent::versioned -norequire, 'Plugin::Custom';
 
 =head1 HISTORY
 
@@ -103,14 +106,17 @@ L<base>
 
 =head1 AUTHORS AND CONTRIBUTORS
 
+David Oswald forked this from L<parent> and added version checking.
 Rafaël Garcia-Suarez, Bart Lateur, Max Maischein, Anno Siegel, Michael Schwern
 
 =head1 MAINTAINER
 
-Max Maischein C< corion@cpan.org >
+David Oswald C< davido@cpan.org >
 
-Copyright (c) 2007-2017 Max Maischein C<< <corion@cpan.org> >>
-Based on the idea of C<base.pm>, which was introduced with Perl 5.004_04.
+Copyright (c) 2019 David Oswald C<< <davido@cpan.org> >>.
+Based on a fork from L<parent>, which is maintained
+by Max Maischein C<< <corion@cpan.org> >>, and was introduced to the
+Perl core with Perl 5.10.
 
 =head1 LICENSE
 

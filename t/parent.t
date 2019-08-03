@@ -3,6 +3,7 @@
 BEGIN {
    if( $ENV{PERL_CORE} ) {
         chdir 't' if -d 't';
+        # TODO: What is supposed to happen here?
         chdir '../lib/parent';
         @INC = '..';
     }
@@ -11,7 +12,7 @@ BEGIN {
 use strict;
 use Test::More tests => 9;
 
-use_ok('parent');
+use_ok('parent::versioned');
 
 
 package No::Version;
@@ -21,17 +22,17 @@ sub VERSION { 42 }
 
 package Test::Version;
 
-use parent -norequire, 'No::Version';
+use parent::versioned -norequire, 'No::Version';
 ::is( $No::Version::VERSION, undef,          '$VERSION gets left alone' );
 
-# Test Inverse: parent.pm should not clobber existing $VERSION
+# Test Inverse: parent::versioned.pm should not clobber existing $VERSION
 package Has::Version;
 
 BEGIN { $Has::Version::VERSION = '42' };
 
 package Test::Version2;
 
-use parent -norequire, 'Has::Version';
+use parent::versioned -norequire, 'Has::Version';
 ::is( $Has::Version::VERSION, 42 );
 
 package main;
@@ -41,7 +42,7 @@ my $eval1 = q{
     package Eval1;
     {
       package Eval2;
-      use parent -norequire, 'Eval1';
+      use parent::versioned -norequire, 'Eval1';
       $Eval2::VERSION = "1.02";
     }
     $Eval1::VERSION = "1.01";
@@ -60,10 +61,10 @@ my $expected= q{/^Can't locate reallyReAlLyNotexists.pm in \@INC \(\@INC contain
 $expected= q{/^Can't locate reallyReAlLyNotexists.pm in \@INC \(you may need to install the reallyReAlLyNotexists module\) \(\@INC contains:/}
     if 5.017005 <= $];
 
-eval q{use parent 'reallyReAlLyNotexists'};
+eval q{use parent::versioned 'reallyReAlLyNotexists'};
 like( $@, $expected, 'baseclass that does not exist');
 
-eval q{use parent 'reallyReAlLyNotexists'};
+eval q{use parent::versioned 'reallyReAlLyNotexists'};
 like( $@, $expected, '  still failing on 2nd load');
 
 {
@@ -71,7 +72,7 @@ like( $@, $expected, '  still failing on 2nd load');
 
     package Test::Version3;
 
-    use parent -norequire, 'Has::Version_0';
+    use parent::versioned -norequire, 'Has::Version_0';
     ::is( $Has::Version_0::VERSION, 0, '$VERSION==0 preserved' );
 }
 

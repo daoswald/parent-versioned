@@ -2,6 +2,7 @@
 BEGIN {
     if( $ENV{PERL_CORE} ) {
         chdir 't' if -d 't';
+        # TODO - What is supposed to happen here?
         chdir '../lib/parent';
         @INC = '..';
     }
@@ -40,7 +41,7 @@ our $got_here;
 my $res = eval q{
     package MyTest;
 
-    use parent 'FileThatOnlyExistsAsPMC';
+    use parent::versioned 'FileThatOnlyExistsAsPMC';
 
     1
 };

@@ -2,6 +2,7 @@
 BEGIN {
     if( $ENV{PERL_CORE} ) {
         chdir 't' if -d 't';
+        # TODO: What is supposed to happen here? 
         chdir '../lib/parent';
         @INC = '..';
     }
@@ -13,18 +14,18 @@ use lib 't/lib';
 
 {
     package Child;
-    use parent 'Dummy';
+    use parent::versioned 'Dummy';
 }
 
 {
     package Child2;
     require Dummy;
-    use parent -norequire, 'Dummy::InlineChild';
+    use parent::versioned -norequire, 'Dummy::InlineChild';
 }
 
 {
     package Child3;
-    use parent "Dummy'Outside";
+    use parent::versioned "Dummy'Outside";
 }
 
 my $obj = {};

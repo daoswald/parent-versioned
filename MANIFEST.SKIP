@@ -5,8 +5,8 @@ CVS/
 MYMETA.*
 .bak$
 Makefile$
-^parent-.*/
-^parent-.*.tar$
-^parent-.*.tar.gz$
+^parent-versioned.*/
+^parent-versioned.*.tar$
+^parent-versioned.*.tar.gz$
 pm_to_blib
 .travis.yml

@@ -12,7 +12,7 @@ release date is mentioned as well
 
 =cut
 
-my $module = 'parent';
+my $module = 'parent::versioned';
 
 (my $file = $module) =~ s!::!/!g;
 require "$file.pm";
