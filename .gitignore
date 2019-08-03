@@ -9,3 +9,4 @@ parent-*.tar
 parent/
 parent-*/
 MYMETA.*
+cover_db/
