@@ -1,18 +1,18 @@
 {
-   "abstract" : "Establish an ISA relationship with base classes at compile time",
+   "abstract" : "Establish an ISA relationship with base classes at compile time, with version checking.",
    "author" : [
-      "Max Maischein <corion@cpan.org>"
+      "David Oswald <davido@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.142060",
+   "generated_by" : "ExtUtils::MakeMaker version 7.36, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "perl_5"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
-      "version" : "2"
+      "version" : 2
    },
-   "name" : "parent",
+   "name" : "parent-versioned",
    "no_index" : {
       "directory" : [
          "t",
@@ -32,15 +32,17 @@
       },
       "runtime" : {
          "requires" : {
-            "Test::More" : "0.4"
+            "Test::More" : "0.4",
+            "perl" : "5.006"
          }
       }
    },
-   "release_status" : "stable",
+   "release_status" : "unstable",
    "resources" : {
       "repository" : {
-         "url" : "https://github.com/Corion/parent"
+         "url" : "https://github.com/daoswald/parent-versioned"
       }
    },
-   "version" : "0.236"
+   "version" : "0.001_02",
+   "x_serialization_backend" : "JSON::PP version 4.04"
 }
