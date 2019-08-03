@@ -47,9 +47,44 @@ parent::versioned - Establish an ISA relationship with base classes at compile t
 =head1 SYNOPSIS
 
     package Baz;
+
+    # Just like parent:
     use parent::versioned qw(Foo Bar);
 
+    # Plus version checking:
+    use parent::versioned ['Foo' => 2.3], ['Bar' => 0.05], 'Baz'; # Version checking for Foo and Bar.
+
 =head1 DESCRIPTION
+
+This module behaves identically to L<parent>, except that it also provides a means of
+specifying a minimum version check for modules. It is a fork of L<parent> version 0.237,
+and passes all of L<parent>'s tests, plus tests added to verify the version checking
+feature.
+
+=head2 Behavior distinct from C<parent>
+
+If the list passed to L<parent::versioned> contains an array-ref, that reference should
+specify a module name, and a minimum module version number.  Multiple array-refs may be passed
+in the same call. Each module for which version checking is to be done should exist in its own
+array-ref tuple.
+
+=head3 Examples
+
+  # No version checking on C<Foo> or C<Bar>. but C<Baz> must be version 1.0 or higher.
+  use parent::versioned qw(Foo Bar), ['Baz' => 1.0];
+
+  # Version check both C<Foo> and C<Bar>.
+  use parent::versioned ['Foo' => 0.25], ['Bar' => 1.0];
+
+  # C<-norequire> parameter still works as expected:
+  use parent::versioned -norequire, ['Foo' => 0.25], qw(Bar Baz);
+
+Version checking is accomplished at compile time using the C<VERSION> method. See
+C<perldoc -f use> for an explanation of how C<VERSION()> works.
+
+The remainder of this documentation is derived directly from C<parent>.
+
+=head2 Behavior shared with C<parent>
 
 Allows you to both load one or more modules, while setting up inheritance from
 those modules at the same time.  Mostly similar in effect to
