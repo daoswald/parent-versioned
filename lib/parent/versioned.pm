@@ -2,7 +2,7 @@ package parent::versioned;
 
 use strict;
 
-our $VERSION = '0.001_01';
+our $VERSION = '0.001_02';
 $VERSION = eval "$VERSION";
 
 # Based on parent.pm, version 0.237;
@@ -135,6 +135,19 @@ either C<.pm> or C<.pmc>), use the following code:
   package MySecondPlugin;
   require './plugins/custom.plugin'; # contains Plugin::Custom
   use parent::versioned -norequire, 'Plugin::Custom';
+
+=head1 TEST COVERAGE
+
+L<parent> already had very good tests that reached 100% coverage. This module
+has adapted all of the tests from L<parent> to avoid regressions, and has
+added testing around the versioning functionality. Coverage remains at 100%:
+
+  ---------------------------- ------ ------ ------ ------ ------ ------ ------
+  File                           stmt   bran   cond    sub    pod   time  total
+  ---------------------------- ------ ------ ------ ------ ------ ------ ------
+  blib/lib/parent/versioned.pm  100.0  100.0  100.0  100.0    n/a  100.0  100.0
+  Total                         100.0  100.0  100.0  100.0    n/a  100.0  100.0
+  ---------------------------- ------ ------ ------ ------ ------ ------ ------
 
 =head1 HISTORY
 
