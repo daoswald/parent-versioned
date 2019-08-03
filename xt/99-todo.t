@@ -3,10 +3,10 @@ use File::Spec;
 use File::Find;
 use strict;
 
-# Check that all files do not contain any 
+# Check that all files do not contain any
 # lines with "XXX" - such markers should
 # either have been converted into Todo-stuff
-# or have been resolved. 
+# or have been resolved.
 # The test was provided by Andy Lester.
 
 my @files;
