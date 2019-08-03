@@ -29,7 +29,7 @@ sub import {
     {
         no strict 'refs';
         push @{"$inheritor\::ISA"},
-             map {ref($_) eq 'ARRAY' ? $_->[0]->VERSION($_->[1]) && $_->[0] : $_ }
+             map {ref($_) eq 'ARRAY' ? do {$_->[0]->VERSION($_->[1]); $_->[0]} : $_ }
              @_; # dies if a loop is detected or if a requisite version is not met.
     };
 };
