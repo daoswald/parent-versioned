@@ -8,10 +8,6 @@ WriteMakefile1(
     'VERSION_FROM'    => "lib/parent/versioned.pm", # finds $VERSION
     'PREREQ_PM'       => { Test::More => 0.40 },
     # parent.pm joined the core with 5.10.1
-    # 5.12 fixed the @INC order so that site/ comes before perl/
-    # So we only install into perl/ for versions between the two
-    # TODO - We're not perl CORE, what needs to happen here?
-    'INSTALLDIRS' => ($] >= 5.010001 and $] < 5.012 ? 'perl' : 'site'),
     'LICENSE'       => 'perl',
      'META_MERGE' => {
         'resources' => {

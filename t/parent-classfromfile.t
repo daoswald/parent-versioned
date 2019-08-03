@@ -1,14 +1,5 @@
 #!/usr/bin/perl -w
 
-BEGIN {
-    if( $ENV{PERL_CORE} ) {
-        chdir 't' if -d 't';
-        # TODO: What is supposed to happen here?
-        chdir '../lib/parent';
-        @INC = '..';
-    }
-}
-
 use strict;
 use Test::More tests => 4;
 use lib 't/lib';
