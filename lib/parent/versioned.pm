@@ -70,13 +70,13 @@ array-ref tuple.
 
 =head3 Examples
 
-  # No version checking on C<Foo> or C<Bar>. but C<Baz> must be version 1.0 or higher.
+  # No version checking on Foo or Bar. but Baz must be version 1.0 or higher.
   use parent::versioned qw(Foo Bar), ['Baz' => 1.0];
 
-  # Version check both C<Foo> and C<Bar>.
+  # Version check both Foo and Bar.
   use parent::versioned ['Foo' => 0.25], ['Bar' => 1.0];
 
-  # C<-norequire> parameter still works as expected:
+  # The -norequire parameter still works as expected:
   use parent::versioned -norequire, ['Foo' => 0.25], qw(Bar Baz);
 
 Version checking is accomplished at compile time using the C<VERSION> method. See
@@ -138,7 +138,7 @@ either C<.pm> or C<.pmc>), use the following code:
 
 =head1 HISTORY
 
-This module was forked from L<parent>, which itself was forked from
+This module was forked from L<parent> 0.237, which itself was forked from
 L<base> to remove the cruft that had accumulated in it.
 
 =head1 CAVEATS
@@ -155,14 +155,15 @@ L<base> to remove the cruft that had accumulated in it.
 
 =head1 AUTHORS AND CONTRIBUTORS
 
-David Oswald forked this module from L<parent> and added version checking.
+David Oswald forked this module from L<parent> version 0.237,
+and added version checking.
 
 L<parent> was authored by Rafaël Garcia-Suarez, Bart Lateur, Max Maischein,
 Anno Siegel, and Michael Schwern.
 
 =head1 MAINTAINER
 
-David Oswald C< davido@cpan.org >
+David Oswald C<davido@cpan.org>
 
 Copyright (c) 2019 David Oswald C<< <davido@cpan.org> >>.
 
