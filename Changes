@@ -1,4 +1,5 @@
 0.00101 2019-08-03
     . Initial version forked from parent.pm, version 0.237.
     . Shift to parent::versioned namespace.
+    . Support array ref import list to specify minimum module version.
 

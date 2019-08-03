@@ -18,6 +18,9 @@ sub import {
         shift @_;
     } else {
         for ( my @filename = @_ ) {
+
+            $_ = $_->[0] if ref $_ eq 'ARRAY';
+
             s{::|'}{/}g;
             require "$_.pm"; # dies if the file is not found
         }
@@ -25,7 +28,9 @@ sub import {
 
     {
         no strict 'refs';
-        push @{"$inheritor\::ISA"}, @_; # dies if a loop is detected
+        push @{"$inheritor\::ISA"},
+             map {ref($_) eq 'ARRAY' ? $_->[0]->VERSION($_->[1]) && $_->[0] : $_ }
+             @_; # dies if a loop is detected or if a requisite version is not met.
     };
 };
 
