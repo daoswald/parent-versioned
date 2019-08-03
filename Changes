@@ -1,3 +1,8 @@
+0.00102 2019-08-03
+    . Incorporate tests for versioning functionality (100% coverage).
+    . Update POD to include a section about test coverage.
+    . Fix some ^M line endings in xt/ tests.
+
 0.00101 2019-08-03
     . Initial version forked from parent.pm, version 0.237.
     . Shift to parent::versioned namespace.
