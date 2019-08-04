@@ -37,12 +37,12 @@
          }
       }
    },
-   "release_status" : "unstable",
+   "release_status" : "stable",
    "resources" : {
       "repository" : {
          "url" : "https://github.com/daoswald/parent-versioned"
       }
    },
-   "version" : "0.001_02",
+   "version" : "0.002",
    "x_serialization_backend" : "JSON::PP version 4.04"
 }

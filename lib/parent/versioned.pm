@@ -2,7 +2,7 @@ package parent::versioned;
 
 use strict;
 
-our $VERSION = '0.001_02';
+our $VERSION = '0.002';
 $VERSION = eval "$VERSION";
 
 # Based on parent.pm, version 0.237;

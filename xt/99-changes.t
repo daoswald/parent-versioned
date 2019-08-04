@@ -17,7 +17,7 @@ my $module = 'parent::versioned';
 (my $file = $module) =~ s!::!/!g;
 require "$file.pm";
 
-my $version = sprintf '%0.5f', $module->VERSION;
+my $version = sprintf '%0.3f', $module->VERSION;
 diag "Checking for version " . $version;
 
 my $changes = do { local $/; open my $fh, 'Changes' or die $!; <$fh> };
