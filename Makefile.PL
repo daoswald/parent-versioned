@@ -4,7 +4,6 @@ WriteMakefile1(
     'NAME'            => 'parent::versioned',
     'ABSTRACT_FROM'   => 'lib/parent/versioned.pm', # retrieve abstract from module
     'AUTHOR'          => 'David Oswald <davido@cpan.org>',
-    #    'AUTHOR'          => 'Max Maischein <corion@cpan.org>',
     'VERSION_FROM'    => "lib/parent/versioned.pm", # finds $VERSION
     'PREREQ_PM'       => { Test::More => 0.40 },
     # parent.pm joined the core with 5.10.1
