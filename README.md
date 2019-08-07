@@ -31,7 +31,8 @@ This module has no dependencies aside from Perl version 5.6.1 or newer.
 ```
 use parent::versioned qw(Foo Bar::Baz); # Exactly like parent module.
 
-use parent::versioned ['Foo' => 0.25], ['Bar::Baz' => 1.0]; # Require minimum versions.
+use parent::versioned ['Foo'      => 0.25],
+                      ['Bar::Baz' => 1.0 ]; # Require minimum versions.
 ```
 
 ## Description

@@ -38,6 +38,8 @@ sub import {
 
 __END__
 
+=pod
+
 =encoding utf8
 
 =head1 NAME
@@ -52,8 +54,9 @@ parent::versioned - Establish an ISA relationship with base classes at compile t
     use parent::versioned qw(Foo Bar);
 
     # Plus version checking:
-    use parent::versioned ['Foo' => 2.3], ['Bar' => 0.05], 'Baz'; # Version checking for Foo and Bar.
-
+    use parent::versioned ['Foo' => 2.3 ],  # Version checking for Foo and Bar.
+                          ['Bar' => 0.05],
+                          'Baz';
 =head1 DESCRIPTION
 
 This module behaves identically to L<parent>, except that it also provides a means of
@@ -74,10 +77,13 @@ array-ref tuple.
   use parent::versioned qw(Foo Bar), ['Baz' => 1.0];
 
   # Version check both Foo and Bar.
-  use parent::versioned ['Foo' => 0.25], ['Bar' => 1.0];
+  use parent::versioned ['Foo' => 0.25],
+                        ['Bar' => 1.0 ];
 
   # The -norequire parameter still works as expected:
-  use parent::versioned -norequire, ['Foo' => 0.25], qw(Bar Baz);
+  use parent::versioned -norequire,
+                        ['Foo' => 0.25],
+                        qw(Bar Baz);
 
 Version checking is accomplished at compile time using the C<VERSION> method. See
 C<perldoc -f use> for an explanation of how C<VERSION()> works.
